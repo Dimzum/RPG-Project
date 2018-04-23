@@ -18,7 +18,18 @@ public class PlayerManager : MonoBehaviour {
     public GameObject player;
 
     public void KillPlayer() {
-        Debug.Log("GAME OVER! RESTARTING THE GAME.");
+        float delay = 3.0f;
+
+        Debug.Log("GAME OVER! RESTARTING THE GAME IN " + delay + " Seconds.");
+        StartCoroutine(RestartGame(delay));
+
+        //Debug.Log("GAME OVER! RESTARTING THE GAME.");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator RestartGame(float delay) {
+        yield return new WaitForSeconds(delay);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

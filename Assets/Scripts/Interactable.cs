@@ -5,7 +5,7 @@ public class Interactable : MonoBehaviour {
     public float radius = 3f;
     public Transform interactionTransform;
 
-    bool isFocus = false;
+    public bool isFocus = false;
     Transform player;
 
     bool hasInteracted = false;
@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour {
         //Debug.Log("Interacting with " + transform.name);
     }
 
-    void Update() {
+    public virtual void Update() {
         if (isFocus && !hasInteracted) {
             float distance = Vector3.Distance(player.position, interactionTransform.position);
             if (distance <= radius) {
@@ -31,7 +31,7 @@ public class Interactable : MonoBehaviour {
         hasInteracted = false;
     }
 
-    public void OnDefocused() {
+    public virtual void OnDefocused() {
         isFocus = false;
         player = null;
         hasInteracted = false;
