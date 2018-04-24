@@ -5,10 +5,10 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
 
-    public float lookRadius = 10f;
+    public float lookRadius = 10f; // Detection range
 
-    Transform target;
-    NavMeshAgent agent;
+    Transform target; // Reference to the player
+    NavMeshAgent agent; // Reference to the NavMeshAgent
     CharacterCombat combat;
 
 	// Use this for initialization
@@ -36,6 +36,7 @@ public class EnemyController : MonoBehaviour {
         }
 	}
 
+    // Rotate to face the target
     void FaceTarget () {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
