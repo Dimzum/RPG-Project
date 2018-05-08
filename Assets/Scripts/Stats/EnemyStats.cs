@@ -6,12 +6,22 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats {
 
+    public Object skeletonPrebab = Resources.Load("Prefabs/Skeleton Enemy");
+    public GameObject skeletonEnemy;
+
 	public override void Die() {
 		base.Die();
 
 		// Add ragdoll effect / death animation
 
 		Destroy(gameObject);
-	}
+    }
+
+    public override void Respawn() {
+        base.Respawn();
+        
+        skeletonEnemy = Instantiate(skeletonPrebab) as GameObject;
+        //skeletonEnemy.transform.position = new Vector3();
+    }
 
 }

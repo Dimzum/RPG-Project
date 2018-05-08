@@ -12,26 +12,22 @@ public class PlayerStats : CharacterStats {
 	}
 	
 	// Called when an item gets equipped/unequipped
-	void OnEquipmentChanged (Equipment newItem, Equipment oldItem)
-	{
+	void OnEquipmentChanged (Equipment newItem, Equipment oldItem) {
 		// Add new modifiers
-		if (newItem != null)
-		{
+		if (newItem != null) {
 			armor.AddModifier(newItem.armorModifier);
 			damage.AddModifier(newItem.damageModifier);
 		}
 
 		// Remove old modifiers
-		if (oldItem != null)
-		{
+		if (oldItem != null) {
 			armor.RemoveModifier(oldItem.armorModifier);
 			damage.RemoveModifier(oldItem.damageModifier);
 		}
 		
 	}
 
-	public override void Die()
-	{
+	public override void Die() {
 		base.Die();
 		PlayerManager.instance.KillPlayer();
 	}
